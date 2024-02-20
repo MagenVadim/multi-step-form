@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import Step from './Components/Step'
+
 
 function App() {
+
+  const steps = [
+    {step: 1, info:"Your info"},
+    {step: 2, info:"Select plan"},
+    {step: 3, info:"ADD-ONS"},
+    {step: 4, info:"Summary"},
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="form">
+        <div className="form-container">
+          <div className="form-sidebar">
+            {
+              steps.map((step)=>(
+                <Step key={step.step} step={step.step} info={step.info}/>
+              ))
+            }
+          </div>
+        </div>
+
+        <div className="stp stp-1">
+          <header>
+            <h1 className="title">Personal info</h1>
+            <p className="exp">
+              Please provide your name, email address, and phone number.
+            </p>
+          </header>
+        </div>
+        
+      </div>
     </div>
   );
 }
