@@ -1,6 +1,6 @@
 import './App.css';
 import Step from './Components/Step'
-
+import Input from './Components/Input'
 
 function App() {
 
@@ -22,17 +22,28 @@ function App() {
               ))
             }
           </div>
-        </div>
 
-        <div className="stp stp-1">
-          <header>
-            <h1 className="title">Personal info</h1>
-            <p className="exp">
-              Please provide your name, email address, and phone number.
-            </p>
-          </header>
-        </div>
-        
+          <div className="stp stp-1">
+            <header>
+              <h1 className="title">Personal info</h1>
+              <p className="exp">
+                Please provide your name, email address, and phone number.
+              </p>
+            </header>
+
+            <form>
+              <Input type ={'text'} labelName={'Name'} id={'name'} placeholder={'Name Surname'}/>
+              <Input type ={'text'} labelName={'Email Address'} id={'email'} placeholder={'email@gmail.com'}/>
+              <Input type ={'phone'} labelName={'Phone Number'} id={'phone'} placeholder={'+1 234 567 890'}/>
+            </form>
+
+            <div className="btns">
+              <button className='next-stp' type="submit">Next Step</button>
+            </div>
+
+          </div>
+      </div>
+
       </div>
     </div>
   );
