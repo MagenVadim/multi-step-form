@@ -113,11 +113,13 @@ header .exp{
   color: var(--White);
   cursor: pointer;
 }
+
+/* STEP-1 */
 .step{
   display: flex;
   width: 90%;
 }
-form{
+.form-1{
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -150,4 +152,11 @@ form input::placeholder{
   color: var(--Strawberry-red);
   font-size: .9rem;
   font-weight: 700;
+}
+
+/* STEP-2 */
+.form-2{
+  display: flex;
+  flex: 1;
+  align-items: center;
 }

@@ -15,7 +15,7 @@ function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, 
         </p>
         </header>
 
-        <form>
+        <form className='form-1'>
         <Input 
             key ={"input-1"} 
             type ={'text'} 
