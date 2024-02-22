@@ -130,3 +130,24 @@ form{
   align-items: center;
   justify-content: space-between;
 }
+form input{
+  padding: 1rem;
+  border: 1px solid --Cool-gray;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+form input:focus{
+  outline-color: var(--Purplish-blue);
+}
+form input::placeholder{
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.form .error{
+  display: none;
+  color: var(--Strawberry-red);
+  font-size: .9rem;
+  font-weight: 700;
+}

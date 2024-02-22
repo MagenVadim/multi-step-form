@@ -1,6 +1,11 @@
 import './App.css';
 import Step from './Components/Step'
-import Input from './Components/Input'
+
+import Step1 from './Step1'
+import Step2 from './Step2'
+import {Routes, Route} from 'react-router-dom'
+import { useState, useEffect, useRef } from "react";
+
 
 function App() {
 
@@ -11,6 +16,14 @@ function App() {
     {step: 4, info:"Summary"},
   ]
 
+  const [stepNumber, setStepNumber] = useState(1)
+  const [nameValue, setNameValue] = useState('')
+  const [emailValue, setEmailValue] = useState('')
+  const [phoneValue, setPhoneValue] = useState('')
+
+  useEffect(()=>console.log(nameValue),
+  [nameValue])
+
   return (
     <div className="App">
       <div className="form">
@@ -18,30 +31,30 @@ function App() {
           <div className="form-sidebar">
             {
               steps.map((step)=>(
-                <Step key={step.step} step={step.step} info={step.info}/>
+                <Step key={step.step} step={step.step} info={step.info} stepNumber={stepNumber}/>
               ))
             }
           </div>
 
-          <div className="stp stp-1">
-            <header>
-              <h1 className="title">Personal info</h1>
-              <p className="exp">
-                Please provide your name, email address, and phone number.
-              </p>
-            </header>
+      <Routes>
+        <Route path='/'
+         element={<Step1
+                   stepNumber={stepNumber}
+                   nameValue={nameValue}
+                   setNameValue={setNameValue}
+                   emailValue={emailValue}
+                   setEmailValue={setEmailValue}
+                   phoneValue={phoneValue}
+                   setPhoneValue={setPhoneValue}
+                   setStepNumber={setStepNumber}   
+                  />}
+        />
+        <Route path='/step2' element={<Step2/>}/>
 
-            <form>
-              <Input type ={'text'} labelName={'Name'} id={'name'} placeholder={'Name Surname'}/>
-              <Input type ={'text'} labelName={'Email Address'} id={'email'} placeholder={'email@gmail.com'}/>
-              <Input type ={'phone'} labelName={'Phone Number'} id={'phone'} placeholder={'+1 234 567 890'}/>
-            </form>
+      </Routes>
 
-            <div className="btns">
-              <button className='next-stp' type="submit">Next Step</button>
-            </div>
 
-          </div>
+
       </div>
 
       </div>
