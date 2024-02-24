@@ -15,7 +15,12 @@ function Step2({stepNumber, setStepNumber}) {
   ]
 
   const [selectedID, setSelectedID] = useState(0)
-  useEffect(()=>console.log(selectedID), [selectedID])
+
+
+  useEffect(()=>{
+    console.log("selectedID PlanCard: " + selectedID)
+  }, [selectedID])
+
 
   const handleClick = (i)=>{
     setSelectedID(i)
@@ -49,7 +54,6 @@ function Step2({stepNumber, setStepNumber}) {
       <div className="btns">
         <PrevStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
         <NextStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
-
       </div>
       
     </div>

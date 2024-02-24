@@ -10,8 +10,8 @@ function PrevStep({stepNumber, setStepNumber}) {
         className='prev-stp' 
         type="submit"
         onClick={()=>{
-            setStepNumber(stepNumber-1);
-            navigate('/');
+            setStepNumber(prev => prev-1);
+            stepNumber===2 ? navigate("/") : navigate(`/step${stepNumber-1}`);
         }}
         > Go Back
   </button>
