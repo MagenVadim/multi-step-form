@@ -1,10 +1,9 @@
 import React from 'react'
 import Input from './Components/Input'
-import { useNavigate } from 'react-router-dom';
+import NextStep from './Components/NextStep'
+
 
 function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, phoneValue, setPhoneValue, setStepNumber}) {
-
-    const navigate = useNavigate();
 
   return (
     <div className="stp stp-1">
@@ -46,15 +45,7 @@ function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, 
         </form>
 
     <div className="btns">
-      <button 
-        className='next-stp' 
-        type="submit"
-        onClick={()=>{
-            setStepNumber(stepNumber+1);
-            navigate('/step2');
-        }}
-        > Next Step
-      </button>
+      <NextStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
     </div>
 
   </div>

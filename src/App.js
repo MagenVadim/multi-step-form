@@ -22,7 +22,7 @@ function App() {
   const [phoneValue, setPhoneValue] = useState('')
 
   useEffect(()=>console.log(nameValue),
-  [nameValue])
+  [stepNumber])
 
   return (
     <div className="App">
@@ -49,7 +49,12 @@ function App() {
                    setStepNumber={setStepNumber}   
                   />}
         />
-        <Route path='/step2' element={<Step2/>}/>
+        <Route path='/step2' 
+          element={<Step2
+                  stepNumber={stepNumber} 
+                  setStepNumber={setStepNumber}
+                  />}
+        />
 
       </Routes>
 
