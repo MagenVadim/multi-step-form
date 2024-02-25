@@ -28,7 +28,7 @@ function Step2({stepNumber, setStepNumber}) {
 
 
   return (
-    <div className="stp stp-2">
+    <div className="stp step-2">
 
       <header>
         <h1 className="title">Select your plan</h1>

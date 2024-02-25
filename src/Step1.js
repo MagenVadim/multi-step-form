@@ -6,7 +6,7 @@ import NextStep from './Components/NextStep'
 function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, phoneValue, setPhoneValue, setStepNumber}) {
 
   return (
-    <div className="stp stp-1">
+    <div className="stp step-1">
         <header>
         <h1 className="title">Personal info</h1>
         <p className="exp">
