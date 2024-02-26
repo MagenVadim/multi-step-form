@@ -287,4 +287,40 @@ form input::placeholder{
   justify-content: center;
   flex: 1;
 }
-
+.selection-container{
+  background-color: var(--Magnolia);
+  padding: 1.5rem;
+}
+.selected{
+  border: 2px solid var(--Purplish-blue);
+  background-color: var(--Magnolia);
+}
+.selected-plan{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--Marine-blue);
+  font-weight: 700;
+}
+.selected-adon{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--Cool-gray);
+  font-weight: 500;
+  font-size: .9rem;
+}
+.selected-adon .service-price{
+  color: var(--Marine-blue);
+}
+.total{
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--Cool-gray);
+}
+.total b{
+  color: var(--Purplish-blue);
+  font-size: 1.2rem;
+}

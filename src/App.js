@@ -7,7 +7,9 @@ import Step3 from './Step3'
 import Step4 from './Step4'
 import {Routes, Route} from 'react-router-dom'
 import { useState, useEffect, useRef } from "react";
-
+import IconArcade from './assets/images/icon-arcade.svg'
+import IconAdvanced from './assets/images/icon-advanced.svg'
+import IconPro from './assets/images/icon-pro.svg'
 
 function App() {
 
@@ -18,10 +20,19 @@ function App() {
     {step: 4, info:"Summary"},
   ]
 
+  const plan_priced = [
+    {plan_name:"Arcade", plan_price:"$9/mo", img_source:IconArcade},
+    {plan_name:"Advanced", plan_price:"$12/mo", img_source:IconAdvanced},
+    {plan_name:"Pro", plan_price:"$15/mo", img_source:IconPro}
+  ]
+
+
   const [stepNumber, setStepNumber] = useState(1)
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
+  const [selectedID, setSelectedID] = useState(0)
+
 
   useEffect(()=>console.log(nameValue),
   [stepNumber])
@@ -55,6 +66,9 @@ function App() {
           element={<Step2
                   stepNumber={stepNumber} 
                   setStepNumber={setStepNumber}
+                  selectedID={selectedID}
+                  setSelectedID={setSelectedID}
+                  plan_priced={plan_priced}
                   />}
         />
         <Route path='/step3' 
@@ -67,6 +81,8 @@ function App() {
           element={<Step4
                   stepNumber={stepNumber} 
                   setStepNumber={setStepNumber}
+                  selectedID={selectedID}
+                  plan_priced={plan_priced}
                   />}
         />
 
