@@ -89,7 +89,7 @@ img{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 514px;
+  /* min-width: 514px; */
 }
 header{
   margin-bottom: auto;
@@ -119,6 +119,8 @@ header .exp{
 .step-1{
   display: flex;
   width: 90%;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 .form-1{
   display: flex;
@@ -135,7 +137,7 @@ header .exp{
 }
 form input{
   padding: 1rem;
-  border: 1px solid --Cool-gray;
+  border: 1px solid var(--Cool-gray);
   border-radius: 7px;
   font-weight: 500;
   font-size: 1rem;
@@ -156,6 +158,12 @@ form input::placeholder{
 }
 
 /* STEP-2 */
+.step-2{
+  display: flex;
+  width: 90%;
+  margin-left: 30px;
+  margin-right: 30px;
+}
 .form-2{
   display: flex;
   flex: 1;
@@ -214,7 +222,12 @@ form input::placeholder{
 }
 
 /* Step-3 */
-
+.step-3{
+  display: flex;
+  width: 80%;
+  margin-left: 50px;
+  margin-right: 50px;
+}
 .form-3{
   display: flex;
   flex-direction: column;
@@ -262,4 +275,16 @@ form input::placeholder{
 }
 
 /* Step-4 */
+.step-4{
+  display: flex;
+  width: 80%;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.selection-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
 

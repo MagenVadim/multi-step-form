@@ -11,7 +11,8 @@ function NextStep({stepNumber, setStepNumber}) {
         type="button"
         onClick={()=>{
           setStepNumber(prev => prev+1)
-          navigate(`/step${stepNumber+1}`); 
+          navigate(`/step${stepNumber+1}`);
+          localStorage.setItem('stepNumber', stepNumber+1) 
         }}
         > Next Step
   </button>
