@@ -26,6 +26,29 @@ function App() {
     {plan_name:"Pro", plan_price:"$15/mo", img_source:IconPro}
   ]
 
+  const add_ons = [
+    {service:"Online service", price:"+1/mo"},
+    {service:"Larger storage", price:"+2/mo"},
+    {service:"Customizable Profile", price:"+2/mo"}
+  ]
+
+
+  const [add_ons_selected, set_add_ons_selected] = useState([])
+
+  const handleAddOnsChange = (e)=>{ 
+      if(e.target.checked) {
+        add_ons.map((elem)=>{          
+          if(e.target.value===elem.service)
+          set_add_ons_selected([...add_ons_selected, elem]);        
+        });
+      } else { 
+        set_add_ons_selected(add_ons_selected.filter(obj=>obj.service != e.target.value))        
+      } 
+  }
+
+  useEffect(()=>
+    add_ons_selected.forEach((elem)=>console.log(elem.service + ", " + elem.price)),
+     [add_ons_selected])
 
   const [stepNumber, setStepNumber] = useState(1)
   const [nameValue, setNameValue] = useState('')
@@ -75,6 +98,7 @@ function App() {
           element={<Step3
                   stepNumber={stepNumber} 
                   setStepNumber={setStepNumber}
+                  handleAddOnsChange={handleAddOnsChange}
                   />}
         />
         <Route path='/step4' 
