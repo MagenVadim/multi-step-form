@@ -27,15 +27,21 @@ function App() {
   ]
 
   const add_ons = [
-    {service:"Online service", price:"+1/mo"},
-    {service:"Larger storage", price:"+2/mo"},
-    {service:"Customizable Profile", price:"+2/mo"}
+    {service:"Online service", price:"+1/mo", checkStatus:false},
+    {service:"Larger storage", price:"+2/mo", checkStatus:false},
+    {service:"Customizable Profile", price:"+2/mo", checkStatus:false}
   ]
-
-
-  const [add_ons_selected, set_add_ons_selected] = useState([])
-
   const handleAddOnsChange = (e)=>{ 
+
+      // const nextCheckBoxStatus = checkBoxStatus.map((obj)=>{
+      //   if(obj.service===e.target.value){
+      //     return {...obj, checkStatus: true}
+      //   } else {
+      //     return obj
+      //   }
+      // })
+      // setCheckBoxStatus(nextCheckBoxStatus)
+
       if(e.target.checked) {
         add_ons.map((elem)=>{          
           if(e.target.value===elem.service)
@@ -46,16 +52,26 @@ function App() {
       } 
   }
 
-  useEffect(()=>
-    add_ons_selected.forEach((elem)=>console.log(elem.service + ", " + elem.price)),
-     [add_ons_selected])
+
+
 
   const [stepNumber, setStepNumber] = useState(1)
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
   const [selectedID, setSelectedID] = useState(0)
+  const [checkBoxStatus, setCheckBoxStatus] = useState(add_ons)
 
+  const [add_ons_selected, set_add_ons_selected] = useState([
+    {service:"Online service", price:"+$1/mo", checkStatus:true},
+    {service:"Larger storage", price:"+$2/mo", checkStatus:true},
+    {service:"Customizable Profile", price:"+$2/mo", checkStatus:false}
+  ])
+
+  useEffect(()=>
+    add_ons_selected.forEach((elem)=>console.log(elem.service + ", " + elem.price)
+  ),[add_ons_selected])
+  // useEffect(()=>console.log(checkBoxStatus),[checkBoxStatus])
 
   useEffect(()=>console.log(nameValue),
   [stepNumber])
@@ -99,6 +115,7 @@ function App() {
                   stepNumber={stepNumber} 
                   setStepNumber={setStepNumber}
                   handleAddOnsChange={handleAddOnsChange}
+                  add_ons={checkBoxStatus}
                   />}
         />
         <Route path='/step4' 
@@ -107,6 +124,7 @@ function App() {
                   setStepNumber={setStepNumber}
                   selectedID={selectedID}
                   plan_priced={plan_priced}
+                  add_ons_selected = {add_ons_selected}
                   />}
         />
 

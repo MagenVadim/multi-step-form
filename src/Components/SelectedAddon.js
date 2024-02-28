@@ -1,10 +1,10 @@
 import React from 'react'
 
-function SelectedAddon() {
+function SelectedAddon({servicName, servicPrice}) {
   return (
     <div className='selected-adon'>
-        <span className="service-name">Online service</span>
-        <span className="service-price">+$1/mo</span>
+        <span className="service-name">{servicName}</span>
+        <span className="service-price">{servicPrice}</span>
       
     </div>
   )

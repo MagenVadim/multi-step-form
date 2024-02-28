@@ -3,7 +3,10 @@ import NextStep from './Components/NextStep'
 import PrevStep from './Components/PrevStep'
 import SelectedAdon from "./Components/SelectedAddon"
 
-function Step4({stepNumber, setStepNumber, selectedID, plan_priced}) {
+function Step4({stepNumber, setStepNumber, selectedID, plan_priced, add_ons_selected}) {
+
+  const render_add_ons_selected = add_ons_selected.filter(elem=>elem.checkStatus)
+
   return (    
       <div className="stp step-4">
         <header>
@@ -23,7 +26,13 @@ function Step4({stepNumber, setStepNumber, selectedID, plan_priced}) {
 
             <hr />
             <div className="addons">
-              <SelectedAdon/>
+              {render_add_ons_selected.map((obj)=>(
+                <SelectedAdon 
+                  key={obj.service} 
+                  servicName={obj.service} 
+                  servicPrice={obj.price}
+                />
+              ))}              
             </div>
           </div>
           
@@ -32,8 +41,8 @@ function Step4({stepNumber, setStepNumber, selectedID, plan_priced}) {
         <p className="total">Total (per month) <b>+$12/mo</b></p>
         
         <div className="btns">
-          <PrevStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
-          <NextStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
+          <PrevStep key={"butt-st4-01"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>
+          <NextStep key={"butt-st4-02"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>
         </div>
 
       </div>

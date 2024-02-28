@@ -45,7 +45,7 @@ function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, 
         </form>
 
     <div className="btns">
-      <NextStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
+      <NextStep key={"butt-st1-01"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>
     </div>
 
   </div>

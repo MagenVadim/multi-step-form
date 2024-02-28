@@ -38,8 +38,8 @@ function Step2({stepNumber, setStepNumber, selectedID, setSelectedID, plan_price
       </form>
 
       <div className="btns">
-        <PrevStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
-        <NextStep stepNumber={stepNumber} setStepNumber={setStepNumber}/>
+        <PrevStep key={"butt-st2-01"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>
+        <NextStep key={"butt-st2-02"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>
       </div>
       
     </div>
