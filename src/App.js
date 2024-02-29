@@ -30,6 +30,18 @@ function App() {
     {plan_name:"Pro", plan_price:"$150/yr", img_source:IconPro, bonus:"2 months free"}
   ]
 
+  const add_ons_month = [
+    {service:"Online service", price:"+$1/mo", description: "Access to multiplayer games", inputID:"online", checkStatus:false},
+    {service:"Larger storage", price:"+$2/mo", description: "Extra 1TB of cloud save", inputID:"larger", checkStatus:false},
+    {service:"Customizable Profile", price:"+$2/mo", description: "Custom them on your profile", inputID:"profile", checkStatus:false}
+  ]
+  const add_ons_year = [
+    {service:"Online service", price:"+$10/yr", description: "Access to multiplayer games", inputID:"online", checkStatus:false},
+    {service:"Larger storage", price:"+$20/yr", description: "Extra 1TB of cloud save", inputID:"larger", checkStatus:false},
+    {service:"Customizable Profile", price:"+$20/yr", description: "Custom them on your profile", inputID:"profile", checkStatus:false}
+  ]
+
+  const [add_ons_selected, set_add_ons_selected] = useState(add_ons_month)
   const [plan_priced, setPlan_priced] = useState(plan_priced_month)
   const [stepNumber, setStepNumber] = useState(1)
   const [nameValue, setNameValue] = useState('')
@@ -37,16 +49,19 @@ function App() {
   const [phoneValue, setPhoneValue] = useState('')
   const [selectedID, setSelectedID] = useState(0)
   const [terminPlan, setTerminPlan] = useState(false)
+  
 
   useEffect(()=>{
-    terminPlan ? setPlan_priced(plan_priced_year) : setPlan_priced(plan_priced_month)
+    if (terminPlan){
+      setPlan_priced(plan_priced_year);
+      set_add_ons_selected(add_ons_year);
+      console.log("year")
+    } else {
+     setPlan_priced(plan_priced_month);
+     set_add_ons_selected(add_ons_month)
+    }
   },[terminPlan])
 
-  const [add_ons_selected, set_add_ons_selected] = useState([
-    {service:"Online service", price:"+$1/mo", checkStatus:false},
-    {service:"Larger storage", price:"+$2/mo", checkStatus:true},
-    {service:"Customizable Profile", price:"+$2/mo", checkStatus:false}
-  ])
 
   const handleAddOnsChange = (e)=>{    
     if(e.target.checked) {      

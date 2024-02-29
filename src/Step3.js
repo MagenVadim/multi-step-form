@@ -12,36 +12,20 @@ function Step3({stepNumber, setStepNumber, handleAddOnsChange, add_ons}) {
       </header>
 
     <form className="form-3">
-      <AddOns 
-        key={"add-01"} 
-        boxID={1} 
-        inputID={"online"} 
-        labelTitle={"Online service"} 
-        description={"Access to multiplayer games"} 
-        price={"+1/mo"} 
-        handleAddOnsChange={handleAddOnsChange}
-        checked={add_ons[0].checkStatus}
-      />
-      <AddOns 
-        key={"add-02"} 
-        boxID={2} 
-        inputID={"larger"} 
-        labelTitle={"Larger storage"} 
-        description={"Extra 1TB of cloud save"} 
-        price={"+2/mo"} 
-        handleAddOnsChange={handleAddOnsChange}
-        checked={add_ons[1].checkStatus}
-      />
-      <AddOns 
-        key={"add-03"} 
-        boxID={3} 
-        inputID={"profile"} 
-        labelTitle={"Customizable Profile"} 
-        description={"Custom them on your profile"} 
-        price={"+2/mo"} 
-        handleAddOnsChange={handleAddOnsChange}
-        checked={add_ons[2].checkStatus}
-      />
+      {add_ons.map((el, index)=>(
+        <AddOns 
+          key={el.service} 
+          boxID={index + 1} 
+          inputID={el.inputID} 
+          labelTitle={el.service} 
+          description={el.description} 
+          price={el.price} 
+          handleAddOnsChange={handleAddOnsChange}
+          checked={el.checkStatus}
+        />
+      ))
+      }
+
     </form>
 
 
