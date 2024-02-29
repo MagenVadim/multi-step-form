@@ -3,11 +3,16 @@ import PlanCard from './Components/PlanCard'
 import NextStep from './Components/NextStep'
 import PrevStep from './Components/PrevStep'
 
-function Step2({stepNumber, setStepNumber, selectedID, setSelectedID, plan_priced}) {
+function Step2({stepNumber, setStepNumber, selectedID, setSelectedID, plan_priced, terminPlan, setTerminPlan}) {
  
   useEffect(()=>{
     console.log("selectedID PlanCard: " + selectedID)
   }, [selectedID])
+
+  const handleInputCheckBox = (e)=>{
+    setTerminPlan(e.target.checked);
+
+  }
 
   const handleClick = (i)=>{
     setSelectedID(i)
@@ -29,6 +34,7 @@ function Step2({stepNumber, setStepNumber, selectedID, setSelectedID, plan_price
               img_source={obj.img_source} 
               title={obj.plan_name} 
               plan_price={obj.plan_price}
+              bonus={obj.bonus}
               className={selectedID===index ? "plan-card selected" : "plan-card"}
               handleClick={handleClick}
               index={index}
@@ -36,6 +42,15 @@ function Step2({stepNumber, setStepNumber, selectedID, setSelectedID, plan_price
           ))
         }
       </form>
+
+      <div className="switcher">
+        <p className="monthly sw-active">Monthly</p>
+        <label className="switch">
+          <input type="checkbox" onChange={handleInputCheckBox} checked={terminPlan}/>
+          <span className="slider round"></span>
+        </label>
+        <p className="yearly">Yearly</p>
+      </div>
 
       <div className="btns">
         <PrevStep key={"butt-st2-01"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>

@@ -19,17 +19,28 @@ function App() {
     {step: 3, info:"ADD-ONS"},
     {step: 4, info:"Summary"},
   ]
-  const plan_priced = [
-    {plan_name:"Arcade", plan_price:"$9/mo", img_source:IconArcade},
-    {plan_name:"Advanced", plan_price:"$12/mo", img_source:IconAdvanced},
-    {plan_name:"Pro", plan_price:"$15/mo", img_source:IconPro}
+  const plan_priced_month = [
+    {plan_name:"Arcade", plan_price:"$9/mo", img_source:IconArcade, bonus:""},
+    {plan_name:"Advanced", plan_price:"$12/mo", img_source:IconAdvanced, bonus:""},
+    {plan_name:"Pro", plan_price:"$15/mo", img_source:IconPro, bonus:""}
+  ]
+  const plan_priced_year = [
+    {plan_name:"Arcade", plan_price:"$90/yr", img_source:IconArcade, bonus:"2 months free"},
+    {plan_name:"Advanced", plan_price:"$120/yr", img_source:IconAdvanced, bonus:"2 months free"},
+    {plan_name:"Pro", plan_price:"$150/yr", img_source:IconPro, bonus:"2 months free"}
   ]
 
+  const [plan_priced, setPlan_priced] = useState(plan_priced_month)
   const [stepNumber, setStepNumber] = useState(1)
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
   const [selectedID, setSelectedID] = useState(0)
+  const [terminPlan, setTerminPlan] = useState(false)
+
+  useEffect(()=>{
+    terminPlan ? setPlan_priced(plan_priced_year) : setPlan_priced(plan_priced_month)
+  },[terminPlan])
 
   const [add_ons_selected, set_add_ons_selected] = useState([
     {service:"Online service", price:"+$1/mo", checkStatus:false},
@@ -37,8 +48,7 @@ function App() {
     {service:"Customizable Profile", price:"+$2/mo", checkStatus:false}
   ])
 
-  const handleAddOnsChange = (e)=>{
-    
+  const handleAddOnsChange = (e)=>{    
     if(e.target.checked) {      
       const nextCheckBoxStatus = add_ons_selected.map((elem)=>{
         if(e.target.value===elem.service) {
@@ -88,6 +98,8 @@ function App() {
                   selectedID={selectedID}
                   setSelectedID={setSelectedID}
                   plan_priced={plan_priced}
+                  terminPlan={terminPlan}
+                  setTerminPlan={setTerminPlan}
                   />}
         />
         <Route path='/step3' 
