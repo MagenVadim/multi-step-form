@@ -20,14 +20,14 @@ function App() {
     {step: 4, info:"Summary"},
   ]
   const plan_priced_month = [
-    {plan_name:"Arcade", plan_price:"$9/mo", price: 9, img_source:IconArcade, bonus:""},
-    {plan_name:"Advanced", plan_price:"$12/mo", price: 12, img_source:IconAdvanced, bonus:""},
-    {plan_name:"Pro", plan_price:"$15/mo", price: 15, img_source:IconPro, bonus:""}
+    {plan_name:"Arcade (Monthly)", plan_price:"$9/mo", price: 9, img_source:IconArcade, bonus:""},
+    {plan_name:"Advanced (Monthly)", plan_price:"$12/mo", price: 12, img_source:IconAdvanced, bonus:""},
+    {plan_name:"Pro (Monthly)", plan_price:"$15/mo", price: 15, img_source:IconPro, bonus:""}
   ]
   const plan_priced_year = [
-    {plan_name:"Arcade", plan_price:"$90/yr", price: 90, img_source:IconArcade, bonus:"2 months free"},
-    {plan_name:"Advanced", plan_price:"$120/yr", price: 120, img_source:IconAdvanced, bonus:"2 months free"},
-    {plan_name:"Pro", plan_price:"$150/yr", price: 150, img_source:IconPro, bonus:"2 months free"}
+    {plan_name:"Arcade (Yearly)", plan_price:"$90/yr", price: 90, img_source:IconArcade, bonus:"2 months free"},
+    {plan_name:"Advanced (Yearly)", plan_price:"$120/yr", price: 120, img_source:IconAdvanced, bonus:"2 months free"},
+    {plan_name:"Pro (Yearly)", plan_price:"$150/yr", price: 150, img_source:IconPro, bonus:"2 months free"}
   ]
 
   const add_ons_month = [
@@ -52,26 +52,30 @@ function App() {
 
   const [totalPrice, setTotalPrice] = useState(9)
   const [sum_add_ons, setSum_add_ons] = useState(0)
+  const [terminTitle, setTerminTitle] = useState('mo')
 
 
   const handleTotalPrice=()=>{
     let t1 = plan_priced[selectedID].price;
     let total_sum = t1 + sum_add_ons;
     setTotalPrice(total_sum)
-    console.log("total_sum: " + total_sum)
   }
 
   useEffect(()=>{
     handleTotalPrice();
   }, [terminPlan, selectedID, add_ons_selected, sum_add_ons])
 
-
+  useEffect(()=>{
+    setSum_add_ons(0)
+    if(terminPlan){
+      setTerminTitle('yr')
+    } else {setTerminTitle('mo')}
+  },[terminPlan])
 
   useEffect(()=>{
     if (terminPlan){
       setPlan_priced(plan_priced_year);
       set_add_ons_selected(add_ons_year);
-      console.log("year")
     } else {
      setPlan_priced(plan_priced_month);
      set_add_ons_selected(add_ons_month)
@@ -163,6 +167,8 @@ function App() {
                   plan_priced={plan_priced}
                   add_ons_selected = {add_ons_selected}
                   totalSum={totalPrice}
+                  terminTitle={terminTitle}
+                  terminPlan={terminPlan}
                   />}
         />
 

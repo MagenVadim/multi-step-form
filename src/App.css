@@ -382,3 +382,14 @@ input:checked + .slider::before{
   color: var(--Purplish-blue);
   font-size: 1.2rem;
 }
+.change{
+  color: var(--Cool-gray);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration:underline;
+
+}
+.plan-name{
+  margin-bottom: 0.6rem;
+}

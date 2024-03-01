@@ -5,13 +5,9 @@ import PrevStep from './Components/PrevStep'
 
 function Step2({stepNumber, setStepNumber, selectedID, setSelectedID, plan_priced, terminPlan, setTerminPlan}) {
  
-  useEffect(()=>{
-    console.log("selectedID PlanCard: " + selectedID)
-  }, [selectedID])
 
   const handleInputCheckBox = (e)=>{
-    setTerminPlan(e.target.checked);
-
+    setTerminPlan(e.target.checked);   
   }
 
   const handleClick = (i)=>{
