@@ -3,7 +3,7 @@ import NextStep from './Components/NextStep'
 import PrevStep from './Components/PrevStep'
 import SelectedAdon from "./Components/SelectedAddon"
 
-function Step4({stepNumber, setStepNumber, selectedID, plan_priced, add_ons_selected}) {
+function Step4({stepNumber, setStepNumber, selectedID, plan_priced, add_ons_selected, totalSum}) {
 
   const render_add_ons_selected = add_ons_selected.filter(elem=>elem.checkStatus)
 
@@ -38,7 +38,7 @@ function Step4({stepNumber, setStepNumber, selectedID, plan_priced, add_ons_sele
           
         </div>
 
-        <p className="total">Total (per month) <b>+$12/mo</b></p>
+        <p className="total">Total (per month) <b>{`+$${totalSum}/mo`}</b></p>
         
         <div className="btns">
           <PrevStep key={"butt-st4-01"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>

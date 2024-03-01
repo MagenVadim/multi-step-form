@@ -19,7 +19,7 @@ function Step3({stepNumber, setStepNumber, handleAddOnsChange, add_ons}) {
           inputID={el.inputID} 
           labelTitle={el.service} 
           description={el.description} 
-          price={el.price} 
+          price={el.title_price} 
           handleAddOnsChange={handleAddOnsChange}
           checked={el.checkStatus}
         />
