@@ -5,6 +5,7 @@ import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
 import Step4 from './Step4'
+import Step5 from './Step5'
 import {Routes, Route} from 'react-router-dom'
 import { useState, useEffect } from "react";
 import IconArcade from './assets/images/icon-arcade.svg'
@@ -171,6 +172,11 @@ function App() {
                   terminPlan={terminPlan}
                   />}
         />
+        <Route path='/step5' 
+          element={<Step5
+
+                  />}
+/>
 
       </Routes>
 

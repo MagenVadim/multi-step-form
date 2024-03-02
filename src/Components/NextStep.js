@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function NextStep({stepNumber, setStepNumber}) {
 
     const navigate = useNavigate();
+    
 
   return (
     <button 
@@ -14,7 +15,7 @@ function NextStep({stepNumber, setStepNumber}) {
           navigate(`/step${stepNumber+1}`);
           localStorage.setItem('stepNumber', stepNumber+1) 
         }}
-        > Next Step
+        > {stepNumber===4 ? "Confirm": "Next Step"}
   </button>
   )
 }

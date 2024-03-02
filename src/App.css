@@ -393,3 +393,13 @@ input:checked + .slider::before{
 .plan-name{
   margin-bottom: 0.6rem;
 }
+
+/* Step-5 */
+.step-5{
+  display: flex;
+  width: 90%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}
