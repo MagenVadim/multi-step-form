@@ -44,10 +44,7 @@ function App() {
 
   const [add_ons_selected, set_add_ons_selected] = useState(add_ons_month)
   const [plan_priced, setPlan_priced] = useState(plan_priced_month)
-  const [stepNumber, setStepNumber] = useState(1)
-  const [nameValue, setNameValue] = useState('')
-  const [emailValue, setEmailValue] = useState('')
-  const [phoneValue, setPhoneValue] = useState('')
+  const [stepNumber, setStepNumber] = useState(1) 
   const [selectedID, setSelectedID] = useState(0)
   const [terminPlan, setTerminPlan] = useState(false)
 
@@ -55,13 +52,31 @@ function App() {
   const [sum_add_ons, setSum_add_ons] = useState(0)
   const [terminTitle, setTerminTitle] = useState('mo')
 
+  const [nameValue, setNameValue] = useState('')  
+  const [emailValue, setEmailValue] = useState('')
+  const [phoneValue, setPhoneValue] = useState('')
+
+  const [nameStatus, setNameStatus] = useState(true)
+  const [statusButton, setStatusButton] = useState(true)
+
+
+  const pers_info_verification = ()=>{
+    if (!nameStatus){
+      setStatusButton(false)
+    } else {setStatusButton(true)}
+  }
+
+  useEffect(()=>{
+    pers_info_verification()
+  },[nameStatus])
+
+
 
   const handleTotalPrice=()=>{
     let t1 = plan_priced[selectedID].price;
     let total_sum = t1 + sum_add_ons;
     setTotalPrice(total_sum)
   }
-
   useEffect(()=>{
     handleTotalPrice();
   }, [terminPlan, selectedID, add_ons_selected, sum_add_ons])
@@ -134,11 +149,14 @@ function App() {
                    stepNumber={stepNumber}
                    nameValue={nameValue}
                    setNameValue={setNameValue}
+                   nameStatus = {nameStatus}
+                   setNameStatus = {setNameStatus}
                    emailValue={emailValue}
                    setEmailValue={setEmailValue}
                    phoneValue={phoneValue}
                    setPhoneValue={setPhoneValue}
-                   setStepNumber={setStepNumber}   
+                   setStepNumber={setStepNumber} 
+                   statusButton = {statusButton}
                   />}
         />
         <Route path='/step2' 

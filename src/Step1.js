@@ -3,7 +3,29 @@ import Input from './Components/Input'
 import NextStep from './Components/NextStep'
 
 
-function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, phoneValue, setPhoneValue, setStepNumber}) {
+function Step1({
+   stepNumber,
+   nameValue,
+   setNameValue,
+   emailValue,
+   setEmailValue,
+   phoneValue,
+   setPhoneValue,
+   setStepNumber,
+   setNameStatus,
+   nameStatus,
+   statusButton
+  }) 
+  {
+
+  const nameHandler = (e)=>{
+    setNameValue(e.target.value)
+    if (e.target.value<1) {
+      setNameStatus(true);      
+    } else {
+      setNameStatus(false);
+    }
+  }
 
   return (
     <div className="stp step-1">
@@ -23,6 +45,8 @@ function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, 
             placeholder={'Name Surname'} 
             value={nameValue} 
             setNameValue={setNameValue}
+            nameHandler={nameHandler}
+            nameStatus={nameStatus}
         />
         <Input 
             key ={"input-2"} 
@@ -45,7 +69,7 @@ function Step1({stepNumber, nameValue, setNameValue, emailValue, setEmailValue, 
         </form>
 
     <div className="btns">
-      <NextStep key={"butt-st1-01"} stepNumber={stepNumber} setStepNumber={setStepNumber}/>
+      <NextStep key={"butt-st1-01"} stepNumber={stepNumber} setStepNumber={setStepNumber} statusButton={statusButton}/>
     </div>
 
   </div>

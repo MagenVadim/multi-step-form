@@ -151,10 +151,14 @@ form input::placeholder{
   font-family: inherit;
 }
 .form .error{
-  display: none;
+  
   color: var(--Strawberry-red);
   font-size: .9rem;
   font-weight: 700;
+}
+.btn-disabled{
+  cursor: auto;
+  opacity: .4;
 }
 
 /* STEP-2 */
