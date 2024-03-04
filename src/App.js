@@ -56,19 +56,28 @@ function App() {
   const [emailValue, setEmailValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
 
-  const [nameStatus, setNameStatus] = useState(true)
+  const [nameStatus, setNameStatus] = useState(false)
+  const [emailStatus, setEmailStatus] = useState(false)
+  const [phoneStatus, setPhoneStatus] = useState(false)
+
+  const [nameError, setNameError] = useState("Name field can't be empty!");
+  const [emailError, setEmailError] = useState("Email field can't be empty!"); 
+  const [phoneError, setPhoneError] = useState("Phone field can't be empty!");
   const [statusButton, setStatusButton] = useState(true)
 
 
   const pers_info_verification = ()=>{
-    if (!nameStatus){
+    if (nameStatus && emailStatus && phoneStatus && nameError===''  && emailError==='' && phoneError===''){
       setStatusButton(false)
-    } else {setStatusButton(true)}
+    } else {
+      setStatusButton(true)
+      console.log("setStatusButton true")
+    }
   }
 
   useEffect(()=>{
     pers_info_verification()
-  },[nameStatus])
+  },[nameStatus, emailStatus, phoneStatus, nameError, emailError, phoneError])
 
 
 
@@ -150,13 +159,23 @@ function App() {
                    nameValue={nameValue}
                    setNameValue={setNameValue}
                    nameStatus = {nameStatus}
+                   emailStatus={emailStatus}
+                   phoneStatus={phoneStatus}
                    setNameStatus = {setNameStatus}
+                   setEmailStatus = {setEmailStatus}
+                   setPhoneStatus = {setPhoneStatus}
                    emailValue={emailValue}
                    setEmailValue={setEmailValue}
                    phoneValue={phoneValue}
                    setPhoneValue={setPhoneValue}
                    setStepNumber={setStepNumber} 
                    statusButton = {statusButton}
+                   nameError = {nameError}
+                   setNameError = {setNameError}
+                   emailError = {emailError}
+                   setEmailError = {setEmailError}
+                   phoneError = {phoneError}
+                   setPhoneError = {setPhoneError}
                   />}
         />
         <Route path='/step2' 
