@@ -67,11 +67,10 @@ function App() {
 
 
   const pers_info_verification = ()=>{
-    if (nameStatus && emailStatus && phoneStatus && nameError===''  && emailError==='' && phoneError===''){
+    if (nameError===''  && emailError==='' && phoneError===''){
       setStatusButton(false)
     } else {
       setStatusButton(true)
-      console.log("setStatusButton true")
     }
   }
 

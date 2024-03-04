@@ -1,7 +1,6 @@
 import React from 'react'
 import Input from './Components/Input'
 import NextStep from './Components/NextStep'
-import {useState} from "react"
 
 function Step1({
    stepNumber,
